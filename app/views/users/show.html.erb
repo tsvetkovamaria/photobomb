@@ -1,2 +1,24 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <h1><%= @user.name %></h1>
+  <% if  @user == current_user %>
+  <%= link_to "Edit my profile", edit_user_registration_path(current_user)  %>
+  <% end %>
+  <div>
+    <%= link_to "Add Photo", new_photo_path %>
+  </div>
+  <h2><%= @user.name %>'s photos: </h2>
+  <div class="row"> 
+    <% @photos.each do |photo| %>
+    <div class="col-md-4">
+      <div class="photo-card">
+        <%= image_tag photo.image.url(:medium) %>
+        <h3><%= link_to photo.name, photo_path(photo) %>
+          <% if  @user == current_user %>
+          <%= link_to 'x', photo_path(photo), method: :delete, data: {confirm: "Are you sure? You won't be able to restore photo after you delete it."} %>
+          <% end %>
+        </h3>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

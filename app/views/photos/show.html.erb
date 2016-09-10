@@ -1,8 +1,9 @@
-<h1><%= @photo.name %></h1>
-<p><%= @photo.user.name %>
-  
-  <% if @photo.user == current_user %>
+<div class="container">
+  <h1><%= @photo.name %></h1>
+  <p><%= link_to @photo.user.name, show_user_path(@photo.user) %>
+    <% if @photo.user == current_user %>
     <%= link_to 'x', photo_path(@photo), method: :delete, data: {confirm: "Are you sure? You won't be able to restore photo after you delete it."} %>
-  <% end %>
-</p>
-<%= image_tag @photo.image.url(:medium) %>
+    <% end %>
+  </p>
+  <%= image_tag @photo.image.url(:medium) %>
+</div>

@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   before_action :correct_user, only: :destroy 
 
   def index
-    @photos = Photo.all
+    @photos = Photo.order('created_at DESC')
   end
 
   def show
@@ -27,7 +27,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
-    redirect_to root_path
+    redirect_to :back
   end
 
   private
