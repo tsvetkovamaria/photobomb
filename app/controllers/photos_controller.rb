@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @user_comment = UserComment.new
     @user_comments = @photo.user_comments.order('created_at DESC')
-    @average = UserComment.average(:score)
+    @average = @user_comments.average(:score)
   end
 
   def new
@@ -21,16 +21,19 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     if @photo.save
+      flash[:success] = "Photo successfully uploaded"
       redirect_to @photo
     else
-      render 'edit'
+      flash[:danger] = "Something went wrong"
+      render 'new'
     end
   end
 
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
-    redirect_to :back
+    flash[:success] = "Photo successfully destroyed"
+    redirect_to root_path
   end
 
   private

@@ -2,3 +2,22 @@
 @import "bootstrap";
 
 @import "photos";
+
+.photo-card {
+  margin-bottom: 40px;
+}
+.img-wrap {
+  display: block;
+  max-height: 120px;
+  overflow: hidden;
+}
+.img-wrap img{
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+
+}
+.full-image img{
+  max-width: 100%;
+}

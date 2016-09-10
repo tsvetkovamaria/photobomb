@@ -1,23 +1,42 @@
 <div class="container">
   <h1><%= @photo.name %></h1>
-  <p><%= link_to @photo.user.name, show_user_path(@photo.user) %>
+  <p class="clearfix">By: <b><%= link_to @photo.user.name, show_user_path(@photo.user) %></b> 
     <% if @photo.user == current_user %>
-    <%= link_to 'x', photo_path(@photo), method: :delete, data: {confirm: "Are you sure? You won't be able to restore photo after you delete it."} %>
+    <%= link_to 'Delete Photo', photo_path(@photo), method: :delete, data: {confirm: "Are you sure? You won't be able to restore photo after you delete it."}, class: 'btn btn-danger pull-right' %>
     <% end %>
   </p>
-  <%= image_tag @photo.image.url(:medium) %>
-  <p>Average score = <%= @average %></p>
-  <div>
-    <%= render 'user_comments/form', p: @photo %>
+  <div class="full-image">
+    <%= image_tag @photo.image.url(:original) %>
+    </div>
+
+
+  <% if @user_comments.empty? %>
+  <p>The image is not rated yet. Be the first to leave your opinion here!</p>
+  <% else %>
+  <h3 class="text-center">Average score = <%= @average %></h3>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= render 'user_comments/form', p: @photo %>
+    </div>
   </div>
-  <div>
-    <h4>Comments</h4>
-    <% @user_comments.each do |comment| %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h4>Comments</h4>
+
+      <% if @user_comments.empty? %>
+      <p>There are no comments yet. Be the first one!</p>
+      <% else %>
+      <% @user_comments.each do |comment| %>
       <div>
         <p>By: <%= link_to comment.user.name, show_user_path(comment.user) %>, score: <%= comment.score %></p>
         <p><%= comment.body %></p>
         <hr>
       </div>
-    <% end %>
+      <% end %>
+      <% end %>
+    </div>
   </div>
+
 </div>

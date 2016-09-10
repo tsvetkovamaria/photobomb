@@ -11,10 +11,12 @@
     <% @photos.each do |photo| %>
     <div class="col-md-4">
       <div class="photo-card">
-        <%= image_tag photo.image.url(:medium) %>
+      <div class="img-wrap">
+          <%= image_tag photo.image.url(:medium) %>
+        </div>
         <h3><%= link_to photo.name, photo_path(photo) %>
           <% if  @user == current_user %>
-          <%= link_to 'x', photo_path(photo), method: :delete, data: {confirm: "Are you sure? You won't be able to restore photo after you delete it."} %>
+          <%= link_to 'Delete', photo_path(photo), method: :delete, data: {confirm: "Are you sure? You won't be able to restore photo after you delete it."}, class: "pull-right btn btn-sm btn-default" %>
           <% end %>
         </h3>
       </div>

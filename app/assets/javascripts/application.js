@@ -15,3 +15,17 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function() {
+  var inp = $('#photo_score');
+  inp.on('input', function() {
+    var value = inp.val();
+    if (value > 5) {
+      inp.val(5);
+    } else if (value < 1){
+      inp.val(1);
+    }
+  });
+
+ 
+})
