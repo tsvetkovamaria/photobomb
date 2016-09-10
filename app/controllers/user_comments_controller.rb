@@ -1,22 +1,12 @@
 class UserCommentsController < ApplicationController
 
-  def new
+  before_action :authenticate_user!
 
-  end
 
   def create
     @user_comment = UserComment.new(user_comment_params)
     @user_comment.save
     redirect_to :back
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private
