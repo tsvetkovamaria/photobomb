@@ -13,7 +13,6 @@ ActiveAdmin.register Photo do
 #   permitted
 # end
 
-
   permit_params :name, :image
 
   form do |f|
