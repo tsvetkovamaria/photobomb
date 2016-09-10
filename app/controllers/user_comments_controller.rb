@@ -6,10 +6,8 @@ class UserCommentsController < ApplicationController
 
   def create
     @user_comment = UserComment.new(user_comment_params)
-    if @user_comment.save
-      redirect_to :back
-    end
-
+    @user_comment.save
+    redirect_to :back
   end
 
   def edit
