@@ -9,6 +9,9 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    @user_comment = UserComment.new
+    @user_comments = @photo.user_comments.order('created_at DESC')
+    @average = UserComment.average(:score)
   end
 
   def new

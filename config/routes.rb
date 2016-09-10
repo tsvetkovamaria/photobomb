@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'user/:id', to: 'users#show', as: 'show_user'
 
+  resources :user_comments
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

@@ -1,0 +1,14 @@
+<%= form_for(@user_comment) do |f| %>
+<%=  f.hidden_field :user_id, :value => current_user.id %>
+<%= f.hidden_field :photo_id, :value => p.id  %>
+
+<div>
+  <%= f.text_area :body %>
+</div>
+<div>
+  <%= f.text_field :score %>
+</div>
+<div>
+  <%= f.submit 'Comment' %>
+</div>
+<% end %>

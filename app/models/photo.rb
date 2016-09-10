@@ -1,6 +1,7 @@
 class Photo < ApplicationRecord
 
   belongs_to :user
+  has_many :user_comments
   
   validates :name, presence: true, length: {maximum: 250}
 

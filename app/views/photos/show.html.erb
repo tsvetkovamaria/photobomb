@@ -6,4 +6,18 @@
     <% end %>
   </p>
   <%= image_tag @photo.image.url(:medium) %>
+  <p>Average score = <%= @average %></p>
+  <div>
+    <%= render 'user_comments/form', p: @photo %>
+  </div>
+  <div>
+    <h4>Comments</h4>
+    <% @user_comments.each do |comment| %>
+      <div>
+        <p>By: <%= link_to comment.user.name, show_user_path(comment.user) %>, score: <%= comment.score %></p>
+        <p><%= comment.body %></p>
+        <hr>
+      </div>
+    <% end %>
+  </div>
 </div>
