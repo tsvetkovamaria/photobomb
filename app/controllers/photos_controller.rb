@@ -4,7 +4,8 @@ class PhotosController < ApplicationController
   before_action :correct_user, only: :destroy 
 
   def index
-    @photos = Photo.order('created_at DESC')
+    @photos = Photo.order('created_at DESC').paginate(:page => params[:page], :per_page => 9)
+
   end
 
   def show

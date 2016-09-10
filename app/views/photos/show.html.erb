@@ -13,7 +13,7 @@
   <% if @user_comments.empty? %>
   <p>The image is not rated yet. Be the first to leave your opinion here!</p>
   <% else %>
-  <h3 class="text-center">Average score = <%= @average %></h3>
+  <h3 class="text-center">Average score = <%=  '%.1f' % @average %></h3>
   <% end %>
 
   <div class="row">

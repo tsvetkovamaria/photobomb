@@ -10,8 +10,7 @@ require 'ffaker'
 
 AdminUser.create!(email: 'admin@example.com', password: '123456', password_confirmation: '123456')
 
-images = ['deer', 'fall', 'girl', 'ghost', 'house', 'kitten', 'lake', 'pool', 'sport', 'sunset']
-fixtures_path = Rails.root.join('app', 'assets', 'images', 'fixtures')
+images = ['deer', 'fall', 'girl', 'ghost', 'house', 'kitten', 'lake', 'pool', 'sport', 'sunset', 'duck']
 
 5.times do
   User.create(
